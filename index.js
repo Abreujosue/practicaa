@@ -1,7 +1,2 @@
-function sayHello() {
-    return 'Hola Mundo';
-}
-
-console.log(holaMundo());
-
-module.exports = sayHello;
+const sayHello = require('./hello');
+console.log(sayHello());

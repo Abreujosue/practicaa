@@ -33,15 +33,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Jest globally
-        run: npm install -g jest
-
-      - name: List contents of node_modules/.bin
-        run: ls -la node_modules/.bin
-
-      - name: Ensure Jest is executable
-        run: chmod +x node_modules/.bin/jest
-
       - name: Run Jest tests
         run: npx jest
 

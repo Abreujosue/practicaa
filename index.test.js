@@ -1,5 +1,6 @@
-const sayHello = require('../hello');
+const sayHello = require('./hello');  
 
 test('should return "Hola Mundo"', () => {
-    expect(sayHello()).toBe('Hola Mundo');
+  expect(sayHello()).toBe('Hola Mundo');
 });
+
