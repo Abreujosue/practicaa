@@ -14,36 +14,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
-    - name: Cache node modules
-      uses: actions/cache@v3
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node_modules
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: List permissions in node_modules/.bin
-      run: ls -la node_modules/.bin
+      - name: Install Jest globally
+        run: npm install -g jest
 
-    - name: Ensure Jest is executable
-      run: chmod +x node_modules/.bin/jest
+      - name: List contents of node_modules/.bin
+        run: ls -la node_modules/.bin
 
-    - name: Run Jest directly from node_modules/.bin
-      run: ./node_modules/.bin/jest
+      - name: Ensure Jest is executable
+        run: chmod +x node_modules/.bin/jest
 
-    - name: Display node version
-      run: node -v
+      - name: Run Jest tests
+        run: npx jest
 
-    - name: Display npm version
-      run: npm -v
+      - name: Display node version
+        run: node -v
+
+      - name: Display npm version
+        run: npm -v
