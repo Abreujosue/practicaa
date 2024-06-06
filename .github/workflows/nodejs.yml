@@ -39,8 +39,8 @@ jobs:
     - name: Ensure Jest is executable
       run: chmod +x node_modules/.bin/jest
 
-    - name: Run tests
-      run: npx jest
+    - name: Run Jest directly from node_modules/.bin
+      run: ./node_modules/.bin/jest
 
     - name: Display node version
       run: node -v
